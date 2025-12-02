@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SaintAdams — Portfolio</title>
   <meta name="description" content="Personal site and portfolio of SaintAdams." />
+
+  <!-- Google Font (change to any font you like) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
+    <div class="container header-inner">
+      <!-- Optional logo: add assets/logo.png to your repo or change the src -->
+      <img class="logo" src="assets/logo.png" alt="SaintAdams logo" onerror="this.style.display='none'">
       <h1 class="site-title">SaintAdams</h1>
       <nav class="nav">
         <a href="#about">About</a>
@@ -21,7 +27,7 @@
 
   <main class="container">
     <section id="hero" class="hero">
-      <h2>Hello — Welcome to my page</h2>
+      <h2>Hello — I build useful things</h2>
       <p>I’m SaintAdams. This is a simple starter site you can edit and expand. Below are some projects and ways to contact me.</p>
       <p class="cta">
         <a class="btn" href="#projects">View projects</a>
@@ -36,15 +42,19 @@
 
     <section id="projects" class="card">
       <h3>Projects</h3>
-      <ul class="project-list">
-        <li>
-          <strong>Project One</strong> — Brief description. <a href="#">Source</a>
+      <!-- Projects are now in a grid — add images or descriptions inside each item -->
+      <ul class="project-list grid">
+        <li class="project-item">
+          <strong>Project One</strong>
+          <p>Brief description. <a href="#">Source</a></p>
         </li>
-        <li>
-          <strong>Project Two</strong> — Brief description. <a href="#">Source</a>
+        <li class="project-item">
+          <strong>Project Two</strong>
+          <p>Brief description. <a href="#">Source</a></p>
         </li>
-        <li>
-          <strong>Project Three</strong> — Brief description. <a href="#">Source</a>
+        <li class="project-item">
+          <strong>Project Three</strong>
+          <p>Brief description. <a href="#">Source</a></p>
         </li>
       </ul>
     </section>
