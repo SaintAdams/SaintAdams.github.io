@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Episode 1 — First Episode</title>
+  <meta name="description" content="Episode 1 — short summary and full show notes for the episode." />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="alternate" type="application/rss+xml" title="SaintAdams Podcast" href="/podcast.xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="site-title">SaintAdams Podcast</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h1>Episode 1 — First Episode (Title)</h1>
+      <div class="meta">Published: 2025-12-02 · 32m</div>
+
+      <audio controls preload="metadata" style="width:100%; margin-top:12px;">
+        <source src="/assets/audio/episode-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <h3>Show notes</h3>
+      <p>Write full show notes here: topics covered, links mentioned in the episode, guest bios, and timestamps.</p>
+
+      <h3>Transcript</h3>
+      <p><a href="/episodes/episode-1-transcript.html">Read the transcript</a> (optional but great for accessibility and SEO)</p>
+
+      <h3>Links & resources</h3>
+      <ul>
+        <li>Link mentioned #1</li>
+        <li>Guest website</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> SaintAdams · Podcast</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
