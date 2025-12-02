@@ -1,93 +1,61 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SaintAdams Podcast — Trailer & Episodes</title>
-  <meta name="description" content="SaintAdams Podcast — trailer, episodes, show notes, and subscribe links." />
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Podcast RSS (add podcast.xml to repo and update href when ready) -->
-  <link rel="alternate" type="application/rss+xml" title="SaintAdams Podcast" href="/podcast.xml">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <h1 class="site-title">SaintAdams Podcast</h1>
-      <nav class="nav">
-        <a href="#episodes">Episodes</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+---
+layout: default
+title: Home
+---
+<section class="hero card">
+  <div class="hero-inner">
+    <h1>SaintAdams Gaming</h1>
+    <p class="lead">All the latest gaming news, patch notes, events, and community updates. Join our Discord and stay in the loop.</p>
+    <p class="cta">
+      <a class="btn discord" href="{{ site.discord_invite }}" target="_blank" rel="noopener">Join our Discord</a>
+      <a class="btn" href="#news">Latest News</a>
+    </p>
+  </div>
+</section>
 
-  <main class="container">
-    <section id="hero" class="hero card">
-      <h2>Trailer</h2>
-      <p>Welcome — this is a short trailer for the podcast. Click play to listen.</p>
-      <!-- Replace the src with your trailer file or external URL (assets/audio/trailer.mp3) -->
-      <audio controls preload="metadata" style="width:100%">
-        <source src="assets/audio/trailer.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+<section id="news" class="card">
+  <h2>Latest News</h2>
 
-      <p style="margin-top:12px">
-        <strong>Subscribe:</strong>
-        <!-- Replace the hrefs with real links when you publish to platforms -->
-        <a class="btn" href="#" title="Apple Podcasts (link placeholder)">Apple Podcasts</a>
-        <a class="btn" href="#" title="Spotify (link placeholder)">Spotify</a>
-        <a class="btn ghost" href="/podcast.xml" title="RSS feed">RSS</a>
-      </p>
-    </section>
+  {% if site.posts.size == 0 %}
+  <p class="muted">No posts yet — add your first news post in <code>_posts/</code>.</p>
+  {% endif %}
 
-    <section id="about" class="card">
-      <h3>About the show</h3>
-      <p>Write a short description: what the podcast is about, episode cadence (weekly / biweekly), and who it’s for.</p>
-    </section>
+  <ul class="news-list">
+    {% for post in site.posts %}
+    <li class="news-item">
+      <div class="meta"><strong>{{ post.date | date: "%Y-%m-%d" }}</strong> · {{ post.categories | join: ", " }}</div>
+      <a class="news-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.excerpt %}
+      <p class="small muted">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
 
-    <section id="episodes" class="card">
-      <h3>Episodes</h3>
+  <p class="small muted">View the full archive on the <a href="/news/">News</a> page (optional).</p>
+</section>
 
-      <ul class="episode-list">
-        <!-- Repeat or add new list items for each episode -->
-        <li class="episode-item">
-          <div class="episode-meta">
-            <a class="episode-title" href="/episodes/episode-1.html">Episode 1 — First Episode (Title)</a>
-            <div class="meta">Published: 2025-12-02 · 32m</div>
-          </div>
-          <audio controls preload="metadata">
-            <!-- Use either an assets file or external URL -->
-            <source src="assets/audio/episode-1.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-          <p class="small muted">Short summary: a one-line teaser of the episode. <a href="/episodes/episode-1.html">Show notes</a></p>
-        </li>
+<section id="events" class="card">
+  <h2>Upcoming Events</h2>
+  <ul>
+    <li>Fri 20:00 UTC — Community Play Night</li>
+    <li>Sat 18:00 UTC — Speedrun showcase</li>
+  </ul>
+</section>
 
-        <!-- Example second episode placeholder -->
-        <li class="episode-item">
-          <div class="episode-meta">
-            <a class="episode-title" href="#">Episode 0 — Coming Soon</a>
-            <div class="meta">Published: TBD · —</div>
-          </div>
-          <p class="small muted">Preview and release plan.</p>
-        </li>
-      </ul>
-    </section>
+<section id="community" class="card">
+  <h2>Community</h2>
+  <p>Connect with us:</p>
+  <p>
+    <a class="btn discord" href="{{ site.discord_invite }}" target="_blank" rel="noopener">Join Discord</a>
+    <a class="btn ghost" href="https://twitter.com/{{ site.twitter_handle }}" target="_blank" rel="noopener">Twitter</a>
+    <a class="btn ghost" href="https://www.twitch.tv/{{ site.twitch_channel }}" target="_blank" rel="noopener">Twitch</a>
+  </p>
 
-    <section id="contact" class="card">
-      <h3>Contact & Guest Requests</h3>
-      <p>Want to be a guest or sponsor an episode? Email: <a href="mailto:you@example.com">you@example.com</a></p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="year"></span> SaintAdams · Podcast · Built with ❤️</small>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  <h3>Subscribe</h3>
+  <p>Get news by email (Formspree example):</p>
+  <form action="https://formspree.io/f/your-form-id" method="POST" class="newsletter">
+    <input type="email" name="email" placeholder="you@example.com" required>
+    <button class="btn" type="submit">Subscribe</button>
+  </form>
+</section>
