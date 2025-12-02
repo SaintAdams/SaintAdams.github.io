@@ -3,72 +3,86 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SaintAdams — Portfolio</title>
-  <meta name="description" content="Personal site and portfolio of SaintAdams." />
-
-  <!-- Google Font (change to any font you like) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <title>SaintAdams Podcast — Trailer & Episodes</title>
+  <meta name="description" content="SaintAdams Podcast — trailer, episodes, show notes, and subscribe links." />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Podcast RSS (add podcast.xml to repo and update href when ready) -->
+  <link rel="alternate" type="application/rss+xml" title="SaintAdams Podcast" href="/podcast.xml">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Optional logo: add assets/logo.png to your repo or change the src -->
-      <img class="logo" src="assets/logo.png" alt="SaintAdams logo" onerror="this.style.display='none'">
-      <h1 class="site-title">SaintAdams</h1>
+      <h1 class="site-title">SaintAdams Podcast</h1>
       <nav class="nav">
+        <a href="#episodes">Episodes</a>
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section id="hero" class="hero">
-      <h2>Hello — I build useful things</h2>
-      <p>I’m SaintAdams. This is a simple starter site you can edit and expand. Below are some projects and ways to contact me.</p>
-      <p class="cta">
-        <a class="btn" href="#projects">View projects</a>
-        <a class="btn ghost" href="#contact">Contact</a>
+    <section id="hero" class="hero card">
+      <h2>Trailer</h2>
+      <p>Welcome — this is a short trailer for the podcast. Click play to listen.</p>
+      <!-- Replace the src with your trailer file or external URL (assets/audio/trailer.mp3) -->
+      <audio controls preload="metadata" style="width:100%">
+        <source src="assets/audio/trailer.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <p style="margin-top:12px">
+        <strong>Subscribe:</strong>
+        <!-- Replace the hrefs with real links when you publish to platforms -->
+        <a class="btn" href="#" title="Apple Podcasts (link placeholder)">Apple Podcasts</a>
+        <a class="btn" href="#" title="Spotify (link placeholder)">Spotify</a>
+        <a class="btn ghost" href="/podcast.xml" title="RSS feed">RSS</a>
       </p>
     </section>
 
     <section id="about" class="card">
-      <h3>About</h3>
-      <p>Short intro text about you — what you build, your interests, and anything you want visitors to know.</p>
+      <h3>About the show</h3>
+      <p>Write a short description: what the podcast is about, episode cadence (weekly / biweekly), and who it’s for.</p>
     </section>
 
-    <section id="projects" class="card">
-      <h3>Projects</h3>
-      <!-- Projects are now in a grid — add images or descriptions inside each item -->
-      <ul class="project-list grid">
-        <li class="project-item">
-          <strong>Project One</strong>
-          <p>Brief description. <a href="#">Source</a></p>
+    <section id="episodes" class="card">
+      <h3>Episodes</h3>
+
+      <ul class="episode-list">
+        <!-- Repeat or add new list items for each episode -->
+        <li class="episode-item">
+          <div class="episode-meta">
+            <a class="episode-title" href="/episodes/episode-1.html">Episode 1 — First Episode (Title)</a>
+            <div class="meta">Published: 2025-12-02 · 32m</div>
+          </div>
+          <audio controls preload="metadata">
+            <!-- Use either an assets file or external URL -->
+            <source src="assets/audio/episode-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <p class="small muted">Short summary: a one-line teaser of the episode. <a href="/episodes/episode-1.html">Show notes</a></p>
         </li>
-        <li class="project-item">
-          <strong>Project Two</strong>
-          <p>Brief description. <a href="#">Source</a></p>
-        </li>
-        <li class="project-item">
-          <strong>Project Three</strong>
-          <p>Brief description. <a href="#">Source</a></p>
+
+        <!-- Example second episode placeholder -->
+        <li class="episode-item">
+          <div class="episode-meta">
+            <a class="episode-title" href="#">Episode 0 — Coming Soon</a>
+            <div class="meta">Published: TBD · —</div>
+          </div>
+          <p class="small muted">Preview and release plan.</p>
         </li>
       </ul>
     </section>
 
     <section id="contact" class="card">
-      <h3>Contact</h3>
-      <p>You can reach me on GitHub: <a href="https://github.com/SaintAdams" target="_blank" rel="noopener">github.com/SaintAdams</a></p>
-      <p>Or email: <a href="mailto:you@example.com">you@example.com</a> (replace with your address)</p>
+      <h3>Contact & Guest Requests</h3>
+      <p>Want to be a guest or sponsor an episode? Email: <a href="mailto:you@example.com">you@example.com</a></p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> SaintAdams · Built with ❤️ · <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a></small>
+      <small>© <span id="year"></span> SaintAdams · Podcast · Built with ❤️</small>
     </div>
   </footer>
 
