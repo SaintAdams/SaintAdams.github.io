@@ -1,0 +1,22 @@
+title: "SaintAdams Gaming"
+description: "News, updates, and community for SaintAdams Gaming."
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://saintadams.github.io" # replace if using a custom domain
+permalink: /news/:title/
+paginate: 5
+
+# Plugins (jekyll-feed is supported on GitHub Pages)
+plugins:
+  - jekyll-feed
+
+# Site-wide variables (change these)
+discord_invite: "https://discord.gg/YOUR_INVITE"
+twitter_handle: "YOURHANDLE"
+twitch_channel: "YOURCHANNEL"
+email: "you@example.com"
+
+# Build settings
+markdown: kramdown
+theme: null
+exclude:
+  - "node_modules"
