@@ -1,0 +1,31 @@
+# SaintAdams Podcast — Site README
+
+What this is
+- A simple podcast website scaffold you can host with GitHub Pages.
+- Includes a trailer player, episodes list, and a sample episode page.
+
+Where to put your audio
+- Recommended: use a podcast host (Anchor, Libsyn, Podbean, Transistor) or store audio on object storage (S3/Cloudflare R2). These services give you reliable bandwidth and an RSS feed.
+- Quick/local: you can add MP3s into `assets/audio/` in the repo (e.g., `assets/audio/episode-1.mp3`) and link to them. Note: GitHub has bandwidth limits; hosting many downloads there is not ideal.
+
+How to add a new episode (manual)
+1. Add your audio file to assets/audio/, e.g., `assets/audio/episode-2.mp3`.
+2. Create a new episode page at `episodes/episode-2.html` (copy `episodes/episode-1.html` and update metadata).
+3. Add a new list item in `index.html` under the Episodes section linking to the new page and pointing the audio src to the new file.
+4. Commit and push. Wait ~30–60s and refresh your site.
+
+Creating an RSS feed (so people can subscribe)
+- Option A (easy): Use your podcast host — they provide an RSS feed and directories (Spotify/Apple). Put the host's feed URL in the "Subscribe" links.
+- Option B (manual): create `podcast.xml` at repo root with standard podcast RSS (itunes tags). Example minimal RSS file must be updated per episode. This is more work but possible for a small show.
+- Option C (automated): Use Jekyll or a small script + GitHub Actions to generate podcast.xml from episode markdown files (`_episodes/`) whenever you commit.
+
+Suggested next steps (pick one)
+- I can add a sample `podcast.xml` RSS file for one episode so you can test subscribing.
+- I can scaffold a Jekyll-based episodes workflow that auto-generates RSS from markdown and episode audio links.
+- I can add a contact/subscribe form (Formspree) and a Patreon/BuyMeACoffee button.
+- I can add a transcript page generator or a template for SEO (podcast schema).
+
+Tell me which of these you want and I'll make it:
+- Add podcast.xml (manual RSS) now? — I will create it and show where to edit for new episodes.
+- Or set up automation with Jekyll + GitHub Actions to generate RSS from markdown posts? — I will scaffold files and the Action.
+- Or do you want me to just change the site copy / branding and add your trailer audio link?
