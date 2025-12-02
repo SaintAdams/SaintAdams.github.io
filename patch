@@ -1,0 +1,16 @@
+---
+title: "Patch 1.2.0 — balance update & bug fixes"
+date: 2025-12-02 10:00:00 +0000
+categories: [patch]
+excerpt: "Patch 1.2.0 brings balance changes to several classes and fixes matchmaking issues."
+---
+
+We're excited to ship Patch 1.2.0. Highlights:
+
+- Nerfed ability X to reduce early-game snowball.
+- Improved matchmaking for ranked queues.
+- Fixed a crash on map load.
+
+Read the full patch notes below and join the discussion on our Discord: {{ site.discord_invite }}.
+
+<!-- You can add images, code blocks, or embeds here. -->
