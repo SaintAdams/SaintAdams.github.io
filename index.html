@@ -1,61 +1,97 @@
----
-layout: default
-title: Home
----
-<section class="hero card">
-  <div class="hero-inner">
-    <h1>SaintAdams Gaming</h1>
-    <p class="lead">All the latest gaming news, patch notes, events, and community updates. Join our Discord and stay in the loop.</p>
-    <p class="cta">
-      <a class="btn discord" href="{{ site.discord_invite }}" target="_blank" rel="noopener">Join our Discord</a>
-      <a class="btn" href="#news">Latest News</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saint Adams</title>
+
+<style>
+body{
+    font-family:Segoe UI,sans-serif;
+    margin:0;
+    background:#0f172a;
+    color:white;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+h1{
+    font-size:4rem;
+    margin:0;
+}
+
+p{
+    max-width:600px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 24px;
+    background:#38bdf8;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.section{
+    padding:80px 20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>Saint Adams</h1>
+    <p>
+        Range & Space Performance Specialist.
+        Passionate about data, optimisation and technology.
     </p>
-  </div>
-</section>
 
-<section id="news" class="card">
-  <h2>Latest News</h2>
+    #aboutExplore</a>
+</div>
 
-  {% if site.posts.size == 0 %}
-  <p class="muted">No posts yet — add your first news post in <code>_posts/</code>.</p>
-  {% endif %}
+<div class="section" id="about">
 
-  <ul class="news-list">
-    {% for post in site.posts %}
-    <li class="news-item">
-      <div class="meta"><strong>{{ post.date | date: "%Y-%m-%d" }}</strong> · {{ post.categories | join: ", " }}</div>
-      <a class="news-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      {% if post.excerpt %}
-      <p class="small muted">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-      {% endif %}
-    </li>
-    {% endfor %}
-  </ul>
+    <div class="card">
+        <h2>About</h2>
+        <p>
+            Turning data into practical decisions.
+        </p>
+    </div>
 
-  <p class="small muted">View the full archive on the <a href="/news/">News</a> page (optional).</p>
-</section>
+    <div class="card">
+        <h2>Projects</h2>
+        <p>
+            Retail analytics, dashboards and web experiments.
+        </p>
+    </div>
 
-<section id="events" class="card">
-  <h2>Upcoming Events</h2>
-  <ul>
-    <li>Fri 20:00 UTC — Community Play Night</li>
-    <li>Sat 18:00 UTC — Speedrun showcase</li>
-  </ul>
-</section>
+    <div class="card">
+        <h2>GitHub</h2>
+        https://github.com/SaintAdams
+            View my repositories
+        </a>
+    </div>
 
-<section id="community" class="card">
-  <h2>Community</h2>
-  <p>Connect with us:</p>
-  <p>
-    <a class="btn discord" href="{{ site.discord_invite }}" target="_blank" rel="noopener">Join Discord</a>
-    <a class="btn ghost" href="https://twitter.com/{{ site.twitter_handle }}" target="_blank" rel="noopener">Twitter</a>
-    <a class="btn ghost" href="https://www.twitch.tv/{{ site.twitch_channel }}" target="_blank" rel="noopener">Twitch</a>
-  </p>
-
-  <h3>Subscribe</h3>
-  <p>Get news by email (Formspree example):</p>
-  <form action="https://formspree.io/f/your-form-id" method="POST" class="newsletter">
-    <input type="email" name="email" placeholder="you@example.com" required>
-    <button class="btn" type="submit">Subscribe</button>
-  </form>
-</section>
+</div>
+Initial homepage
+</body>
+</html>
