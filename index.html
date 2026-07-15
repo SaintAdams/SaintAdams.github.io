@@ -5,12 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jason Adams</title>
 
+https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap
+
 <style>
-body{
-    font-family:Segoe UI,sans-serif;
+
+*{
     margin:0;
-    background:#0f172a;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
     color:white;
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
 .hero{
@@ -20,78 +30,219 @@ body{
     justify-content:center;
     align-items:center;
     text-align:center;
+    padding:20px;
 }
 
-h1{
+.hero h1{
     font-size:4rem;
-    margin:0;
+    margin-bottom:10px;
 }
 
-p{
-    max-width:600px;
+.hero p{
+    font-size:1.2rem;
+    opacity:0.8;
+}
+
+.clock{
+    margin-top:20px;
+    font-size:1.3rem;
+    color:#38bdf8;
 }
 
 .btn{
+    margin-top:30px;
     display:inline-block;
-    margin-top:20px;
-    padding:12px 24px;
-    background:#38bdf8;
-    color:white;
     text-decoration:none;
-    border-radius:8px;
+    color:white;
+    background:#38bdf8;
+    padding:14px 28px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    background:#0ea5e9;
 }
 
 .section{
-    padding:80px 20px;
-    max-width:900px;
+    max-width:1100px;
     margin:auto;
+    padding:100px 20px;
+}
+
+.section h2{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:2rem;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 .card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:20px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:25px;
+    transition:.3s;
 }
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    opacity:.6;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.5rem;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="hero">
+<section class="hero">
+
     <h1>Saint Adams</h1>
+
     <p>
-        Range & Space Performance Specialist.
-        Passionate about data, optimisation and technology.
+        Range & Space Performance Specialist
+        <br>
+        Data • Retail • Technology
     </p>
 
+    <div class="clock" id="clock"></div>
+
     #aboutExplore</a>
-</div>
 
-<div class="section" id="about">
+</section>
 
-    <div class="card">
-        <h2>About</h2>
-        <p>
-            Turning data into practical decisions.
-        </p>
+<section class="section" id="about">
+
+    <h2>About Me</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>What I Do</h3>
+            <p>
+                I work in range and space optimisation,
+                helping turn data into practical decisions
+                that improve retail performance.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Interests</h3>
+            <p>
+                Retail analytics, technology,
+                wildlife, photography and
+                building useful digital tools.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Current Focus</h3>
+            <p>
+                Performance analysis,
+                store optimisation and
+                developing new technical skills.
+            </p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h2>Projects</h2>
-        <p>
-            Retail analytics, dashboards and web experiments.
-        </p>
+</section>
+
+<section class="section">
+
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Retail Dashboard</h3>
+            <p>
+                Future project placeholder for
+                analytics and reporting ideas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Wildlife Gallery</h3>
+            <p>
+                Showcase your wildlife photography
+                and favourite sightings.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Experiments Lab</h3>
+            <p>
+                Fun coding projects,
+                web experiments and ideas.
+            </p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h2>GitHub</h2>
+</section>
+
+<section class="section">
+
+    <h2>Connect</h2>
+
+    <div style="text-align:center;">
+
         https://github.com/SaintAdams
-            View my repositories
+            Visit GitHub
         </a>
+
     </div>
 
-</div>
-Initial homepage
+</section>
+
+<footer>
+
+    © 2026 Saint Adams
+
+</footer>
+
+<script>
+
+function updateClock(){
+
+    const now = new Date();
+
+    document.getElementById('clock').innerText =
+        now.toLocaleString('en-GB');
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
+
 </body>
 </html>
+Launch new homepage
