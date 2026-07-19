@@ -8,10 +8,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --bg:#020617;
     --panel:#0f172a;
@@ -189,65 +188,82 @@ footer{
     border-radius:12px;
 }
 
-@media(max-width:900px){
+/* Sports Widget CSS */
+.widget-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+}
 
+.fixture-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fixture-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.fixture-list li:last-child {
+  border-bottom: none;
+}
+
+.fixture-list strong {
+  color: var(--text);
+  font-size: 1.1em;
+}
+
+.fixture-list span {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+@media(max-width:900px){
     .hero{
         grid-template-columns:1fr;
     }
-
     .hero h1{
         font-size:3rem;
     }
-
     .grid{
         grid-template-columns:1fr;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <div class="nav">
-
 <div class="logo">
 Jason ADAMS
 </div>
-
 <div class="menu">
-#dashboardDashboard</a>
-#projectsProjects</a>
-#githubGitHub</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#projects">Projects</a>
+<a href="#github">GitHub</a>
 </div>
-
 </div>
-
 </header>
 
 <section class="hero">
-
 <div>
-
 <h1>
 <span class="highlight">Operations</span><br>
 Command Centre
 </h1>
-
 <p>
 Welcome to the Jason Adams command centre.
-
 This is just my page to show off any learnings.
 </p>
-
 </div>
 
 <div class="dashboard" id="dashboard">
-
 <div class="grid">
-
 <div class="card">
 <div class="label">Current Time</div>
 <div class="value" id="clock">--:--:--</div>
@@ -265,91 +281,61 @@ This is just my page to show off any learnings.
 
 <div class="card">
 <div class="label">Weather</div>
-
 <div id="weather">
 Loading...
 </div>
-
 <div class="weather-buttons">
-
-https://www.metoffice.gov.uk/weather/forecast/gcp19y8jw
-Forecast
-</a>
-
-https://www.metoffice.gov.uk/weather/maps-and-charts/rainfall-radar-forecast-map
-Rain Radar
-</a>
-
-https://www.metoffice.gov.uk/weather/warnings-and-advice/uk-warnings
-Warnings
-</a>
-
+<a href="https://www.metoffice.gov.uk/weather/forecast/gcp19y8jw">Forecast</a>
+<a href="https://www.metoffice.gov.uk/weather/maps-and-charts/rainfall-radar-forecast-map">Rain Radar</a>
+<a href="https://www.metoffice.gov.uk/weather/warnings-and-advice/uk-warnings">Warnings</a>
 </div>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
 
 <section class="section" id="projects">
-
 <h2>Projects</h2>
-
 <div class="cards">
-
 <div class="project">
 <h3>Fun Lab</h3>
 <p>Experiments, coding projects and widgets.</p>
 </div>
 
+<div class="widget-card">
+  <h3>Upcoming Fixtures</h3>
+  <div id="sports-widget">
+    <p>Loading sports data...</p>
+  </div>
 </div>
-
+</div>
 </section>
 
 <section class="section" id="github">
-
 <h2>GitHub</h2>
-
 <p>
 View my repositories and future projects.
 </p>
-
-https://github.com/JasonAdams
-Visit GitHub
-</a>
-
+<a href="https://github.com/JasonAdams" class="github-btn">Visit GitHub</a>
 </section>
 
 <footer>
-
 © 2026 Jason Adams
-
 </footer>
 
 <script>
-
 function updateClock(){
-
     const now = new Date();
-
     document.getElementById("clock").textContent =
         now.toLocaleTimeString("en-GB");
-
 }
 
 async function loadWeather(){
-
     try{
-
         const response = await fetch(
             "https://api.open-meteo.com/v1/forecast?latitude=50.97&longitude=-1.35&current=temperature_2m"
         );
-
         const data = await response.json();
-
         document.getElementById("weather").innerHTML =
         `
             <div class="value">${Math.round(data.current.temperature_2m)}°C</div>
@@ -357,23 +343,95 @@ async function loadWeather(){
                 Eastleigh, Hampshire
             </div>
         `;
-
     }
     catch(error){
-
         document.getElementById("weather").innerHTML =
         `<div>Weather unavailable</div>`;
-
     }
-
 }
 
 updateClock();
 loadWeather();
-
 setInterval(updateClock,1000);
-
 </script>
 
+<script>
+async function loadSportsFixtures() {
+  const widgetContainer = document.getElementById('sports-widget');
+  
+  // TheSportsDB free tier endpoint URLs
+  // 4328 = EPL, 4387 = NBA, 4391 = NFL, 4380 = NHL, 4443 = WWE
+  const eplUrl = 'https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4328';
+  const nbaUrl = 'https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4387';
+  const nflUrl = 'https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4391';
+  const nhlUrl = 'https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4380';
+  const wweUrl = 'https://www.thesportsdb.com/api/v1/json/3/eventsnextleague.php?id=4443';
+
+  try {
+    // Fetch all endpoints concurrently
+    const [eplRes, nbaRes, nflRes, nhlRes, wweRes] = await Promise.all([
+      fetch(eplUrl),
+      fetch(nbaUrl),
+      fetch(nflUrl),
+      fetch(nhlUrl),
+      fetch(wweUrl)
+    ]);
+
+    const eplData = await eplRes.json();
+    const nbaData = await nbaRes.json();
+    const nflData = await nflRes.json();
+    const nhlData = await nhlRes.json();
+    const wweData = await wweRes.json();
+
+    // Combine up to 2 upcoming events from each to keep the list manageable
+    const combinedEvents = [
+      ...(eplData.events || []).slice(0, 2),
+      ...(nbaData.events || []).slice(0, 2),
+      ...(nflData.events || []).slice(0, 2),
+      ...(nhlData.events || []).slice(0, 2),
+      ...(wweData.events || []).slice(0, 2)
+    ];
+
+    if (combinedEvents.length === 0) {
+      widgetContainer.innerHTML = '<p>No upcoming fixtures found.</p>';
+      return;
+    }
+
+    // Sort all combined events chronologically
+    combinedEvents.sort((a, b) => new Date(a.strTimestamp) - new Date(b.strTimestamp));
+
+    // Build the HTML list
+    let htmlContent = '<ul class="fixture-list">';
+    combinedEvents.forEach(event => {
+      const matchDate = new Date(event.strTimestamp).toLocaleDateString('en-GB', { 
+        weekday: 'short', 
+        month: 'short', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      
+      // Handle WWE events which might not use 'Home vs Away' formatting
+      const eventName = event.strEvent || `${event.strHomeTeam} vs ${event.strAwayTeam}`;
+
+      htmlContent += `
+        <li>
+          <strong>${eventName}</strong><br>
+          <span>${event.strLeague} • ${matchDate}</span>
+        </li>
+      `;
+    });
+    htmlContent += '</ul>';
+
+    widgetContainer.innerHTML = htmlContent;
+
+  } catch (error) {
+    console.error('Error fetching sports data:', error);
+    widgetContainer.innerHTML = '<p>Failed to load fixtures.</p>';
+  }
+}
+
+loadSportsFixtures();
+</script>
 </body>
 </html>
